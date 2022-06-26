@@ -34,7 +34,7 @@ class Ball:
         self.canvas_height=self.canvas.winfo_height()
         self.canvas_width=self.canvas.winfo_width()
         self.hit_bottom=False
-
+        self.score=0
 
 
     def hit_paddle(self,pos):
@@ -54,10 +54,10 @@ class Ball:
             self.y=2
         if self.hit_paddle(pos)==True:
             self.y=-2
-            #score+=1
+            self.score+=1
         if pos[3]>=self.canvas_height:
             self.hit_bottom=True
-            canvas.create_text(245,100,text="Game Over!") # "Your Score: " + str(score))
+            canvas.create_text(245,100,text="Game Over! Your Score: " + str(self.score))
         if pos[0]<=0:
             self.x=2
         if pos[2]>=self.canvas_width:
@@ -110,3 +110,6 @@ while 1:
 
 # Call mainloop to open canvas
 tk.mainloop()
+
+
+# Counter goes up - so does the speed
